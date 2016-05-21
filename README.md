@@ -94,6 +94,12 @@ Or one can input any annotation in GFF 3.0 format:
 
 	jsa.np.gapcloser --realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
 
+Data Analysis
+=============
+All dataset used and result genomes after running *npScarf* are available following this [link](insert plz)
+
+The QUAST analysis for the comparison with other methods are also made public [here](insert plz)
+
 License
 =======
 BSD-like license:
