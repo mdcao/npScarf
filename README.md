@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------
-*npScarf*: a module for real-time scaffolding and finishing genomes by using Nanopore sequencing reads
+*npScarf*: real-time scaffolding and finishing genomes by using Oxford Nanopore sequencing reads
 -------------------------------------------------------------------------
 
 *npScarf* (jsa.np.gapcloser) is a program that connect contigs from a draft genomes 
@@ -7,7 +7,10 @@ to generate sequences that are closer to finish. These pipelines can run on a si
 for microbial datasets. In real-time mode, it can be integrated with simple structural 
 analyses such as gene ordering, plasmid forming.
 
-npScaffolder is bundled within the [Japsa package](http://mdcao.github.io/japsa/).
+Installation
+============
+*npScarf* module is bundled within the [Japsa package](http://mdcao.github.io/japsa/).
+Follow the above link for the installation guide of the whole package.
 
 Usage
 =====
