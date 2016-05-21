@@ -12,6 +12,7 @@ npScaffolder is bundled within the [Japsa package](http://mdcao.github.io/japsa/
 Usage
 =====
 A summary of *npScarf* usage can be obtained by invoking the --help option::
+
    	jsa.np.gapcloser --help
 Input
 ------
@@ -51,31 +52,31 @@ The idea of streaming mode is when the input <*nanopore*> file is retrieved in s
 npReader is the module that provides such data from fast5 files returned from the real-time
 base-calling cloud service Metrichor. Ones can run::
 
-jsa.np.f5reader -realtime -folder c:\Downloads\ -fail -output - | \
+	jsa.np.f5reader -realtime -folder c:\Downloads\ -fail -output - | \
 
-bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
+	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-jsa.np.gapcloser --realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.gapcloser --realtime -b - -seq <*draft*> > log.out 2>&1
 
 or if you have the whole set of Nanopore long reads already and want to emulate the 
 streaming mode::
 
-jsa.np.timeEmulate -s 100 -i <*nanopore*> -output - | \
+	jsa.np.timeEmulate -s 100 -i <*nanopore*> -output - | \
 
-bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
+	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-jsa.np.gapcloser --realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.gapcloser --realtime -b - -seq <*draft*> > log.out 2>&1
 
 Note that jsa.np.timeEmulate based on the field *timeStamp* located in the read name line to
 decide the order of streaming data. So if your input <*nanopore*> already contains the field,
 you have to sort it::
 
-jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timeStamp
+	jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timeStamp
 
 or if your file does not have the *timeStamp* data yet, you can manually make ones. For example::
 
-cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timeStamp=%.2f\n", $0, time; time++}NR%4!=1{print}'
-> <*nanopore-with-time*> 
+	cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timeStamp=%.2f\n", $0, time; time++}NR%4!=1{print}' \
+	> <*nanopore-with-time*> 
 
 Real-time annotation
 --------------------
@@ -83,15 +84,15 @@ The tool includes usecase for streaming annotation. Ones can provides database o
 resistance genes and/or Origin of Replication in FASTA format for the analysis of gene ordering
 and/or plasmid identifying respectively::
 
-jsa.np.timeEmulate -s 100 -i <*nanopore*> -output - | \
+	jsa.np.timeEmulate -s 100 -i <*nanopore*> -output - | \
 
-bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
+	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-jsa.np.gapcloser --realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
+	jsa.np.gapcloser --realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
 
-Or one can input annotation in GFF 3.0 format:
+Or one can input any annotation in GFF 3.0 format:
 
-jsa.np.gapcloser --realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
+	jsa.np.gapcloser --realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
 
 License
 =======
