@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------
-*npScarf*: a module of real-time scaffolding and finishing genomes by using Nanopore sequencing reads
+*npScarf*: a module for real-time scaffolding and finishing genomes by using Nanopore sequencing reads
 -------------------------------------------------------------------------
 
 *npScarf* (jsa.np.gapcloser) is a program that connect contigs from a draft genomes 
