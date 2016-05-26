@@ -20,10 +20,12 @@ Quick installation guide::
       [SERVER=true \] 
       [JLP=/usr/lib/jni:/usr/lib/R/site-library/rJava/jri]
 
-
 *npScarf* module is bundled within the [Japsa package](http://mdcao.github.io/japsa/).
 Details of installation (including for Windows) and usage of Japsa can be found 
 in its documentation hosted on [ReadTheDocs](http://japsa.readthedocs.org/en/latest/index.html) 
+In order to run the pipeline in real-time, [npReader]( https://github.com/mdcao/npReader) is required.
+Make sure it is installed and configured properly.
+
 
 Usage
 =====
