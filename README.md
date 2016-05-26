@@ -1,16 +1,29 @@
 -------------------------------------------------------------------------
-*npScarf*: real-time scaffolding and finishing genomes by using Oxford Nanopore sequencing reads
+*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
 -------------------------------------------------------------------------
 
-*npScarf* (jsa.np.gapcloser) is a program that connect contigs from a draft genomes 
-to generate sequences that are closer to finish. These pipelines can run on a single laptop
-for microbial datasets. In real-time mode, it can be integrated with simple structural 
-analyses such as gene ordering, plasmid forming.
+*npScarf* (jsa.np.gapcloser) is a program that scaffold and complete draft genomes assemblies 
+in real-time with Oxford Nanopore sequencing. These pipelines can run on a computing cluster
+as well as on a laptop computer for for microbial datasets. It can facilitate the real-time 
+analysis of positional information such as gene ordering, and detection of genes from
+mobile elements (plasmids and genomic islands).
 
 Installation
 ============
+Quick installation guide::
+
+    git clone https://github.com/mdcao/japsa
+    cd japsa
+    make install \
+      [INSTALL_DIR=~/.usr/local \] 
+      [MXMEM=7000m \] 
+      [SERVER=true \] 
+      [JLP=/usr/lib/jni:/usr/lib/R/site-library/rJava/jri]
+
+
 *npScarf* module is bundled within the [Japsa package](http://mdcao.github.io/japsa/).
-Follow the above link for the installation guide of the whole package.
+Details of installation (including for Windows) and usage of Japsa can be found 
+in its documentation hosted on [ReadTheDocs](http://japsa.readthedocs.org/en/latest/index.html) 
 
 Usage
 =====
