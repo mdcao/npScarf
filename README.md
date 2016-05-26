@@ -2,10 +2,10 @@
 *npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
 -------------------------------------------------------------------------
 
-*npScarf* (jsa.np.gapcloser) is a program that scaffold and complete draft genomes assemblies 
-in real-time with Oxford Nanopore sequencing. These pipelines can run on a computing cluster
-as well as on a laptop computer for for microbial datasets. It can facilitate the real-time 
-analysis of positional information such as gene ordering, and detection of genes from
+*npScarf* (jsa.np.gapcloser) is a program that scaffolds and completes draft genomes assemblies 
+in real-time with Oxford Nanopore sequencing. The pipeline can run on a computing cluster
+as well as on a laptop computer for microbial datasets. It can facilitate the real-time 
+analysis of positional information such as gene ordering and the detection of genes from
 mobile elements (plasmids and genomic islands).
 
 Installation
