@@ -114,9 +114,9 @@ Or one can input any annotation in GFF 3.0 format:
 
 Data Analysis
 =============
-All dataset used and result genomes after running *npScarf* are available following this [link](insert plz)
+All dataset used and result genomes after running *npScarf* are available following this [link](http://data.genomicsresearch.org/Download/npScarf/)
 
-The QUAST analysis for the comparison with other methods are also made public [here](insert plz)
+The QUAST analysis for the comparison with other methods are also included [here](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/)
 
 License
 =======
