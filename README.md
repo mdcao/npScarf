@@ -17,9 +17,9 @@ Dependency: The pipeline requires the following software installed
 
 Quick installation guide::
 
-    git clone https://github.com/mdcao/japsa
-    cd japsa
-    make install \
+   $ git clone https://github.com/mdcao/japsa
+   $ cd japsa
+   $ make install \
       [INSTALL_DIR=~/.usr/local \] 
       [MXMEM=7000m \] 
       [SERVER=true \] 
