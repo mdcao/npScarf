@@ -33,14 +33,15 @@ instructions from [npReader]( https://github.com/mdcao/npReader) repository.
 
 ##Tutorial
 
-This tutorial will walk through how to use npScarf to complete a genome assembly using Illumina
+This tutorial will walk through how to use npScarf to complete a genome assembly
+of the K. pnuemoniea ATCC BAA-2146 (Kpn2146) bacterial strain using Illumina
 and nanopore sequencing data.
 
 ####Primary data sources: 
 
 1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
 all adaptors. Low quality bases should also be removed. We make available the sequencing
-data for the K. pnuemoniea ATCC BAA-2146 (Kpn2146), sequenced with Illumina MiSeq and are trimmed
+data for the Kpn2146 sample, sequenced with Illumina MiSeq and are trimmed
 with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz)
 and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz).
 
@@ -193,8 +194,12 @@ Please cite npScarf if you find it useful for your research
 Cao, M.D., Nguyen, H.S., et al. Scaffolding and Completing Genome Assemblies in Real-time with Nanopore Sequencing. 
 bioRxiv (Cold Spring Harbor Labs Journals, 2016). doi:[10.1101/054783](http://dx.doi.org/10.1101/054783).
 
-Data and results from npScarf presented in the paper are made available following [XXXX link].
-The QUAST analysis for the comparison with other methods are also made public [here](insert plz)
+Data and results from npScarf presented in the paper are made available following 
+[this link](http://data.genomicsresearch.org/Download/npScarf/data).
+The QUAST analysis for the comparison with other methods are in 
+[Kpn2146](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp2146/report.html),
+[Kpn13883]XXXXXXXXXXXXXXXXXXXXXXXXXX
+
 
 ##License
 
