@@ -1,4 +1,4 @@
-##*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
+#*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
 
 *npScarf* (jsa.np.gapcloser) is a program that scaffolds and completes draft genomes assemblies 
 in real-time with Oxford Nanopore sequencing. The pipeline can run on a computing cluster
@@ -40,9 +40,9 @@ and nanopore sequencing data.
 
 1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
 all adaptors. Low quality bases should also be removed. We make available the sequencing
-data for the K. pnuemoniea ATCC BAA-2146, sequenced with Illumina MiSeq and are trimmed
-with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq)
-and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq).
+data for the K. pnuemoniea ATCC BAA-2146 (Kpn2146), sequenced with Illumina MiSeq and are trimmed
+with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz)
+and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz).
 
 2. Nanopore sequencing data: The raw data (before base-calling) of the K. pneumonia 
 can obtained from ENA with Accession number [XXXXXXXXXXXXXXX]
@@ -51,16 +51,26 @@ Intermediate data are also made available as you walk through the tutorial.
 
 ######Processing
 
-Step 0: Assemble the Illumina data with SPAdes:
+* Step 0: Assemble the Illumina data with SPAdes:
    
-   [command for spades]
+    $ spades.py ...   [command for spades]
 
 The assembly need to be sorted
-   [command for sorting]
+    $ jsa.seq.sort 
 
+The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made available 
+[here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_spades.fasta)
 
-The assembly of the Illumina data (using SPAdes 3.5) is made available in [LINK]
+* Create the bwa index for the Illumina assembly
+   $ bwa index Kp2146_spades.fasta
 
+* In batch mode where all nanopore data have been sequenced and base-called, the scaffolding can be
+done in batch mode with the command:
+  
+    $ bwa .....  | dd.
+
+The nanopore sequencing data for the Kpn2164 sample is made available
+[here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_ONT.fastq.gz).
 
 
 
