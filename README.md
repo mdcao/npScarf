@@ -12,8 +12,8 @@ Installation
 ============
 Dependency: The pipeline requires the following software installed
 
-⋅⋅* SPAdes >= 3.5
-..* bwa >= 7.11
+* SPAdes >= 3.5
+* bwa >= 7.11
 
 Quick installation guide::
 
