@@ -54,8 +54,9 @@ Intermediate data are also made available as you walk through the tutorial.
 
 * Step 0: Assemble the Illumina data with SPAdes:
 
-
+```bash
     $ spades.py ...   [command for spades]
+```
 
 The assembly need to be sorted with command:
 
