@@ -36,19 +36,20 @@ instructions from [npReader]( https://github.com/mdcao/npReader) repository.
 This tutorial will walk through how to use npScarf to complete a genome assembly using Illumina
 and nanopore sequencing data.
 
-####Primary data sources: 
+######Primary data sources: 
 
 1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
 all adaptors. Low quality bases should also be removed. We make available the sequencing
 data for the K. pnuemoniea ATCC BAA-2146, sequenced with Illumina MiSeq and are trimmed
-with trimmomatic.
+with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq)
+and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq).
 
 2. Nanopore sequencing data: The raw data (before base-calling) of the K. pneumonia 
 can obtained from ENA with Accession number [XXXXXXXXXXXXXXX]
 
 Intermediate data are also made available as you walk through the tutorial.
 
-####Processing
+######Processing
 
 Step 0: Assemble the Illumina data with SPAdes:
    
