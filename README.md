@@ -6,7 +6,7 @@ as well as on a laptop computer for microbial datasets. It can facilitate the re
 analysis of positional information such as gene ordering and the detection of genes from
 mobile elements (plasmids and genomic islands).
 
-###Installation
+##Installation
 
 Dependency: The pipeline requires the following software installed
 
@@ -31,12 +31,12 @@ and particularly HDF library is istalled properly. Please refer to installation
 instructions from [npReader]( https://github.com/mdcao/npReader) repository.
 
 
-###Tutorial
+##Tutorial
 
 This tutorial will walk through how to use npScarf to complete a genome assembly using Illumina
 and nanopore sequencing data.
 
-######Primary data sources: 
+####Primary data sources: 
 
 1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
 all adaptors. Low quality bases should also be removed. We make available the sequencing
@@ -50,7 +50,7 @@ can obtained from ENA with run accession ERR868296.
 
 Intermediate data are also made available as you walk through the tutorial.
 
-######Processing
+####Processing
 
 * Step 0: Assemble the Illumina data with SPAdes::
 
