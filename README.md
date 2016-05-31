@@ -52,11 +52,12 @@ Intermediate data are also made available as you walk through the tutorial.
 
 ####Processing
 
-* Step 0: Assemble the Illumina data with SPAdes::
+* Step 0: Assemble the Illumina data with SPAdes:
+
 
     $ spades.py ...   [command for spades]
 
-The assembly need to be sorted with command::
+The assembly need to be sorted with command:
 
 
     $ jsa.seq.sort 
@@ -64,7 +65,8 @@ The assembly need to be sorted with command::
 The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made available 
 [here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_spades.fasta)
 
-* Create the bwa index for the Illumina assembly
+* Create the bwa index for the Illumina assembly:
+
    $ bwa index Kp2146_spades.fasta
 
 * In batch mode where all nanopore data have been sequenced and base-called, the scaffolding can be
