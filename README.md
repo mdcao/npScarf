@@ -96,13 +96,13 @@ $ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
 The processing can be distributed over a network cluster by using the streaming utilities
 provided in japsa package. Information can be found  
 [here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamServer.html) and
-[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamClient.html) and [examples are
-here](http://japsa.readthedocs.io/en/latest/tools/jsa.np.f5reader.html)
+[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamClient.html) and 
+[examples are here](http://japsa.readthedocs.io/en/latest/tools/jsa.np.f5reader.html)
 
 
 
 ## Detailed Usage
-=====
+
 A summary of *npScarf* usage can be obtained by invoking the --help option::
 
    	jsa.np.gapcloser --help
@@ -196,9 +196,15 @@ bioRxiv (Cold Spring Harbor Labs Journals, 2016). doi:[10.1101/054783](http://dx
 
 Data and results from npScarf presented in the paper are made available following 
 [this link](http://data.genomicsresearch.org/Download/npScarf/data).
-The QUAST analysis for the comparison with other methods are in 
+The QUAST analysis of results from npScarf and competitive methods are in also 
+presented for 
 [Kpn2146](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp2146/report.html),
-[Kpn13883]XXXXXXXXXXXXXXXXXXXXXXXXXX
+[Kpn13883](XXX),
+[XXX] (XXX),
+[XXX] (XXX)
+and 
+[XXX] (XXX).
+
 
 
 ##License
