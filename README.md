@@ -10,6 +10,12 @@ mobile elements (plasmids and genomic islands).
 
 Installation
 ============
+Dependency: The pipeline requires the following software installed
+ 
+ SPAdes >= 3.5
+ bwa >= 7.11
+
+
 Quick installation guide::
 
     git clone https://github.com/mdcao/japsa
@@ -23,8 +29,47 @@ Quick installation guide::
 *npScarf* module is bundled within the [Japsa package](http://mdcao.github.io/japsa/).
 Details of installation (including for Windows) and usage of Japsa can be found 
 in its documentation hosted on [ReadTheDocs](http://japsa.readthedocs.org/en/latest/index.html) 
-In order to run the pipeline in real-time, [npReader]( https://github.com/mdcao/npReader) is required.
-Make sure it is installed and configured properly.
+In order to run the pipeline in real-time, [npReader]( https://github.com/mdcao/npReader)
+and particularly HDF library is istalled properly. Please refer to installation 
+instructions from [npReader]( https://github.com/mdcao/npReader) repository.
+
+
+Tutorial
+========
+
+This tutorial will walk through how to use npScarf to complete a genome assembly using Illumina
+and nanopore sequencing data.
+
+Primary data sources: 
+--------------------
+
+1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
+all adaptors. Low quality bases should also be removed. We make available the sequencing
+data for the K. pnuemoniea ATCC BAA-2146, sequenced with Illumina MiSeq and are trimmed
+with trimmomatic.
+
+2. Nanopore sequencing data: The raw data (before base-calling) of the K. pneumonia 
+can obtained from ENA with Accession number [XXXXXXXXXXXXXXX]
+
+Intermediate data are also made available as you walk through the tutorial.
+
+Processing
+----------
+
+Step 0: Assemble the Illumina data with SPAdes:
+   
+   [command for spades]
+
+The assembly need to be sorted
+   [command for sorting]
+
+
+The assembly of the Illumina data (using SPAdes 3.5) is made available in [LINK]
+
+
+
+
+
 
 
 Usage
