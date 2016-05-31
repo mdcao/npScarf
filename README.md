@@ -52,7 +52,7 @@ Intermediate data are also made available as you walk through the tutorial.
 
 ####Processing
 
-* Step 0: Assemble the Illumina data with SPAdes:
+* Assemble the Illumina data with SPAdes:
 
 ```
 $ spades.py ...   [command for spades]
@@ -68,14 +68,16 @@ The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made avai
 [here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_spades.fasta)
 
 * Create the bwa index for the Illumina assembly:
+
 ```
 $ bwa index Kp2146_spades.fasta
 ```
 
 * In batch mode where all nanopore data have been sequenced and base-called, the scaffolding can be
 done in batch mode with the command:
-  
-$ bwa .....  | dd.
+```  
+$ bwa XXXX.....  | XXXX.
+```
 
 The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
 [here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_ONT.fastq.gz).
@@ -86,9 +88,14 @@ in folder Downloads, the pipeline can run with following command:
 ```
 $ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
  | bwa mem XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \
- | jsa.np.gapcloser
+ | jsa.np.gapcloser XXXX
 ```
 
+The processing can be distributed over a network cluster by using the streaming utilities
+provided in japsa package. Information can be found  
+[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamServer.html)
+[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamclient.html) and [examples
+here](http://japsa.readthedocs.io/en/latest/tools/jsa.np.f5reader.html)
 
 
 
