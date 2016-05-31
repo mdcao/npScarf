@@ -54,26 +54,28 @@ Intermediate data are also made available as you walk through the tutorial.
 
 * Step 0: Assemble the Illumina data with SPAdes:
 
-```bash
-    $ spades.py ...   [command for spades]
+```
+$ spades.py ...   [command for spades]
 ```
 
 The assembly need to be sorted with command:
 
-
-    $ jsa.seq.sort 
+```
+$ jsa.seq.sort 
+```
 
 The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made available 
 [here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_spades.fasta)
 
 * Create the bwa index for the Illumina assembly:
-
-   $ bwa index Kp2146_spades.fasta
+```
+$ bwa index Kp2146_spades.fasta
+```
 
 * In batch mode where all nanopore data have been sequenced and base-called, the scaffolding can be
 done in batch mode with the command:
   
-    $ bwa .....  | dd.
+$ bwa .....  | dd.
 
 The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
 [here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_ONT.fastq.gz).
@@ -81,10 +83,11 @@ The nanopore sequencing data for the Kpn2164 sample in fastq format is made avai
 * In real-time mode, assuming the base-called data from Metrichor service are stored
 in folder Downloads, the pipeline can run with following command:
 
-    $ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
-     | bwa mem XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \
-     | jsa.np.gapcloser
-
+```
+$ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
+ | bwa mem XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \
+ | jsa.np.gapcloser
+```
 
 
 
