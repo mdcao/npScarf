@@ -51,7 +51,7 @@ Intermediate data are also made available as you walk through the tutorial.
 
 ######Processing
 
-* Step 0: Assemble the Illumina data with SPAdes:
+* Step 0: Assemble the Illumina data with SPAdes::
    
     $ spades.py ...   [command for spades]
 
