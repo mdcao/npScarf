@@ -75,6 +75,7 @@ $ bwa index Kp2146_spades.fasta
 
 * In batch mode where all nanopore data have been sequenced and base-called, the scaffolding can be
 done in batch mode with the command:
+
 ```  
 $ bwa XXXX.....  | XXXX.
 ```
