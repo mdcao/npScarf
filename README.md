@@ -94,13 +94,13 @@ $ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
 
 The processing can be distributed over a network cluster by using the streaming utilities
 provided in japsa package. Information can be found  
-[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamServer.html)
-[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamclient.html) and [examples
+[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamServer.html) and
+[here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamClient.html) and [examples are
 here](http://japsa.readthedocs.io/en/latest/tools/jsa.np.f5reader.html)
 
 
 
-Usage
+## Detailed Usage
 =====
 A summary of *npScarf* usage can be obtained by invoking the --help option::
 
@@ -185,10 +185,15 @@ Or one can input any annotation in GFF 3.0 format:
 
 	jsa.np.gapcloser --realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
 
-Data Analysis
-=============
-All dataset used and result genomes after running *npScarf* are available following this [link](insert plz)
 
+##Citation
+
+Please cite npScarf if you find it useful for your research
+
+Cao, M.D., Nguyen, H.S., et al. Scaffolding and Completing Genome Assemblies in Real-time with Nanopore Sequencing. 
+bioRxiv (Cold Spring Harbor Labs Journals, 2016). doi:[10.1101/054783](http://dx.doi.org/10.1101/054783).
+
+Data and results from npScarf presented in the paper are made available following [XXXX link].
 The QUAST analysis for the comparison with other methods are also made public [here](insert plz)
 
 License
