@@ -44,18 +44,21 @@ data for the K. pnuemoniea ATCC BAA-2146 (Kpn2146), sequenced with Illumina MiSe
 with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz)
 and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz).
 
-2. Nanopore sequencing data: The raw data (before base-calling) of the K. pneumonia 
-can obtained from ENA with Accession number [XXXXXXXXXXXXXXX]
+2. Nanopore sequencing data: The raw data (before base-calling) of the Kpn2146 
+can obtained from ENA with run accession ERR868296.
+
 
 Intermediate data are also made available as you walk through the tutorial.
 
 ######Processing
 
 * Step 0: Assemble the Illumina data with SPAdes::
-   
+
     $ spades.py ...   [command for spades]
 
-The assembly need to be sorted
+The assembly need to be sorted with command::
+
+
     $ jsa.seq.sort 
 
 The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made available 
@@ -69,9 +72,15 @@ done in batch mode with the command:
   
     $ bwa .....  | dd.
 
-The nanopore sequencing data for the Kpn2164 sample is made available
+The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
 [here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_ONT.fastq.gz).
 
+* In real-time mode, assuming the base-called data from Metrichor service are stored
+in folder Downloads, the pipeline can run with following command:
+
+    $ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
+     | bwa mem XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \
+     | jsa.np.gapcloser
 
 
 
