@@ -1,6 +1,4 @@
--------------------------------------------------------------------------
-*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
--------------------------------------------------------------------------
+##*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
 
 *npScarf* (jsa.np.gapcloser) is a program that scaffolds and completes draft genomes assemblies 
 in real-time with Oxford Nanopore sequencing. The pipeline can run on a computing cluster
@@ -8,8 +6,8 @@ as well as on a laptop computer for microbial datasets. It can facilitate the re
 analysis of positional information such as gene ordering and the detection of genes from
 mobile elements (plasmids and genomic islands).
 
-Installation
-============
+###Installation
+
 Dependency: The pipeline requires the following software installed
 
 * SPAdes >= 3.5
@@ -33,14 +31,12 @@ and particularly HDF library is istalled properly. Please refer to installation
 instructions from [npReader]( https://github.com/mdcao/npReader) repository.
 
 
-Tutorial
-========
+###Tutorial
 
 This tutorial will walk through how to use npScarf to complete a genome assembly using Illumina
 and nanopore sequencing data.
 
-Primary data sources: 
---------------------
+####Primary data sources: 
 
 1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
 all adaptors. Low quality bases should also be removed. We make available the sequencing
@@ -52,8 +48,7 @@ can obtained from ENA with Accession number [XXXXXXXXXXXXXXX]
 
 Intermediate data are also made available as you walk through the tutorial.
 
-Processing
-----------
+####Processing
 
 Step 0: Assemble the Illumina data with SPAdes:
    
