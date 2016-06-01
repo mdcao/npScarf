@@ -78,7 +78,7 @@ $ bwa index Kp2146_spades.fasta
 done in batch mode with the command:
 
 ```  
-$ bwa XXXX.....  | XXXX.
+$ bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y Kp2146_spades.fasta Kp2146_ONT.fastq  | jsa.np.gapcloser -b - -seq Kp2146_spades.fasta -prefix Kp2146-batch 
 ```
 
 The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
@@ -89,8 +89,8 @@ in folder Downloads, the pipeline can run with following command:
 
 ```
 $ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
- | bwa mem XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  \
- | jsa.np.gapcloser XXXX
+ | bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 Kp2146_spades.fasta -  \
+ | jsa.np.gapcloser -realtime -b - -seq Kp2146_spades.fasta -prefix Kp2146-realtime > log.out 2>&1
 ```
 
 The processing can be distributed over a network cluster by using the streaming utilities
@@ -106,6 +106,17 @@ provided in japsa package. Information can be found
 A summary of *npScarf* usage can be obtained by invoking the --help option::
 
    	jsa.np.gapcloser --help
+   	
+Note: options with dash or dash-dash (GNU style) are all acceptable and equivalent iff no ambiguity is introduced.
+For example ones can call instead
+
+	jsa.np.gapcloser -help 
+	
+or even
+	
+	jsa.np.gapcloser -h
+	
+since h is the only prefix in this command's list of options.
 Input
 ------
 *npScarf* takes two files as required input::
@@ -148,7 +159,7 @@ base-calling cloud service Metrichor. Ones can run::
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.gapcloser --realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.gapcloser -realtime -b - -seq <*draft*> > log.out 2>&1
 
 or if you have the whole set of Nanopore long reads already and want to emulate the 
 streaming mode::
@@ -157,7 +168,7 @@ streaming mode::
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.gapcloser --realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.gapcloser -realtime -b - -seq <*draft*> > log.out 2>&1
 
 Note that jsa.np.timeEmulate based on the field *timeStamp* located in the read name line to
 decide the order of streaming data. So if your input <*nanopore*> already contains the field,
@@ -180,11 +191,11 @@ and/or plasmid identifying respectively::
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.gapcloser --realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
+	jsa.np.gapcloser -realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
 
 Or one can input any annotation in GFF 3.0 format:
 
-	jsa.np.gapcloser --realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
+	jsa.np.gapcloser -realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
 
 
 ##Citation
@@ -198,12 +209,12 @@ Data and results from npScarf presented in the paper are made available followin
 [this link](http://data.genomicsresearch.org/Download/npScarf/data).
 The QUAST analysis of results from npScarf and competitive methods are in also 
 presented for 
-[Kpn2146](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp2146/report.html),
-[Kpn13883](XXX),
-[XXX] (XXX),
-[XXX] (XXX)
+[K. pneumoniae ATCC BAA-2146](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp2146/report.html),
+[K. pneumoniae ATCC 13883](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp13883/report.html),
+[E. coli K12 MG1655] (http://data.genomicsresearch.org/Download/npScarf/results/QUAST/EcK12S/report.html),
+[S. Typhil H58] (http://data.genomicsresearch.org/Download/npScarf/results/QUAST/StH58/report.html)
 and 
-[XXX] (XXX).
+[S. cerevisae W303] (http://data.genomicsresearch.org/Download/npScarf/results/QUAST/W303/report.html).
 
 
 
