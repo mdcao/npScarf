@@ -2,7 +2,7 @@
 
 *npScarf* (jsa.np.gapcloser) is a program that scaffolds and completes draft genomes assemblies 
 in real-time with Oxford Nanopore sequencing. The pipeline can run on a computing cluster
-as well as on a laptop computer for microbial datasets. It can facilitate the real-time 
+as well as on a laptop computer for microbial datasets. It also facilitates the real-time 
 analysis of positional information such as gene ordering and the detection of genes from
 mobile elements (plasmids and genomic islands).
 
@@ -26,14 +26,14 @@ Quick installation guide::
 *npScarf* module is bundled within the [Japsa package](http://mdcao.github.io/japsa/).
 Details of installation (including for Windows) and usage of Japsa can be found 
 in its documentation hosted on [ReadTheDocs](http://japsa.readthedocs.org/en/latest/index.html) 
-In order to run the pipeline in real-time, [npReader]( https://github.com/mdcao/npReader)
-and particularly HDF library is istalled properly. Please refer to installation 
-instructions from [npReader]( https://github.com/mdcao/npReader) repository.
+In order to run the *npScarf* in real-time, [npReader]( https://github.com/mdcao/npReader)
+and particularly HDF library need to be istalled properly. Please refer to the installation 
+instructions for [npReader]( https://github.com/mdcao/npReader) repository.
 
 
 ##Tutorial
 
-This tutorial will walk through how to use npScarf to complete a genome assembly
+This tutorial will walk through how to use *npScarf* to complete a genome assembly
 of the K. pnuemoniea ATCC BAA-2146 (Kpn2146) bacterial strain using Illumina
 and nanopore sequencing data.
 
@@ -56,10 +56,10 @@ Intermediate data are also made available as you walk through the tutorial.
 * Assemble the Illumina data with SPAdes using 16 threads in parallel. Option --careful would help to reduce the errors but the improvement is not so significant. It's safe to exclude it from the command if you want to save the running time.
 
 ```
-$ spades.py --careful --pe1-1 file1 --pe1-2 file2 -o spades -t 16
+$ spades.py --careful --pe1-1 Kp2146_paired_1.fastq.gz --pe1-2 Kp2146_paired_2.fastq.gz -o spades -t 16
 ```
 
-The result contigs file of interest is spades/contigs.fasta. Normally it's already sorted by length, if not ones can run the command:
+The result contigs file of interest is spades/contigs.fasta. The contig list is then sorted with 
 
 ```
 $ jsa.seq.sort -r -n --input spades/contigs.fasta --output Kp2146_spades.fasta 
