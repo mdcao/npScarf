@@ -53,16 +53,16 @@ Intermediate data are also made available as you walk through the tutorial.
 
 ####Processing
 
-* Assemble the Illumina data with SPAdes:
+* Assemble the Illumina data with SPAdes using 16 threads in parallel. Option --careful would help to reduce the errors but the improvement is not so significant. It's safe to exclude it from the command if you want to save the running time.
 
 ```
-$ spades.py ...   [command for spades]
+$ spades.py --careful --pe1-1 file1 --pe1-2 file2 -o spades -t 16
 ```
 
-The assembly need to be sorted with command:
+The result contigs file of interest is spades/contigs.fasta. Normally it's already sorted by length, if not ones can run the command:
 
 ```
-$ jsa.seq.sort 
+$ jsa.seq.sort -r -n --input spades/contigs.fasta --output Kp2146_spades.fasta 
 ```
 
 The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made available 
