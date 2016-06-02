@@ -43,7 +43,7 @@ and nanopore sequencing data.
 all adaptors. Low quality bases should also be removed. We make available the sequencing
 data for the Kpn2146 sample, sequenced with Illumina MiSeq and are trimmed
 with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz)
-and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz).
+and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_2.fastq.gz).
 
 2. Nanopore sequencing data: The raw data (before base-calling) of the Kpn2146 
 can obtained from ENA with run accession ERR868296.
