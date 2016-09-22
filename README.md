@@ -170,15 +170,15 @@ streaming mode::
 
 	jsa.np.gapcloser -realtime -b - -seq <*draft*> > log.out 2>&1
 
-Note that jsa.np.timeEmulate based on the field *timeStamp* located in the read name line to
+Note that jsa.np.timeEmulate based on the field *timestamp* located in the read name line to
 decide the order of streaming data. So if your input <*nanopore*> already contains the field,
 you have to sort it::
 
-	jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timeStamp
+	jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timestamp
 
-or if your file does not have the *timeStamp* data yet, you can manually make ones. For example::
+or if your file does not have the *timestamp* data yet, you can manually make ones. For example::
 
-	cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timeStamp=%.2f\n", $0, time; time++}NR%4!=1{print}' \
+	cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timestamp=%.2f\n", $0, time; time++}NR%4!=1{print}' \
 	> <*nanopore-with-time*> 
 
 Real-time annotation
