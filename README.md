@@ -1,6 +1,6 @@
 #*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
 
-*npScarf* (jsa.np.gapcloser) is a program that scaffolds and completes draft genomes assemblies 
+*npScarf* (jsa.np.npscarf) is a program that scaffolds and completes draft genomes assemblies 
 in real-time with Oxford Nanopore sequencing. The pipeline can run on a computing cluster
 as well as on a laptop computer for microbial datasets. It also facilitates the real-time 
 analysis of positional information such as gene ordering and the detection of genes from
@@ -78,7 +78,7 @@ $ bwa index Kp2146_spades.fasta
 done in batch mode with the command:
 
 ```  
-$ bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y Kp2146_spades.fasta Kp2146_ONT.fastq  | jsa.np.gapcloser -b - -seq Kp2146_spades.fasta -prefix Kp2146-batch 
+$ bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y Kp2146_spades.fasta Kp2146_ONT.fastq  | jsa.np.npscarf -b - -seq Kp2146_spades.fasta -prefix Kp2146-batch 
 ```
 
 The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
@@ -88,9 +88,9 @@ The nanopore sequencing data for the Kpn2164 sample in fastq format is made avai
 in folder Downloads, the pipeline can run with following command:
 
 ```
-$ jsa.npReader --realtime --folder Downloads --fail --stat --number --output - \
+$ jsa.np.npreader  --realtime --folder Downloads --fail --stat --number --output - \
  | bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 Kp2146_spades.fasta -  \
- | jsa.np.gapcloser -realtime -b - -seq Kp2146_spades.fasta -prefix Kp2146-realtime > log.out 2>&1
+ | jsa.np.npscarf -realtime -b - -seq Kp2146_spades.fasta -prefix Kp2146-realtime > log.out 2>&1
 ```
 
 The processing can be distributed over a network cluster by using the streaming utilities
@@ -105,23 +105,23 @@ provided in japsa package. Information can be found
 
 A summary of *npScarf* usage can be obtained by invoking the --help option::
 
-   	jsa.np.gapcloser --help
+   	jsa.np.npscarf --help
    	
 Note: options with dash or dash-dash (GNU style) are all acceptable and equivalent iff no ambiguity is introduced.
 For example ones can call instead
 
-	jsa.np.gapcloser -help 
+	jsa.np.npscarf -help 
 	
 or even
 	
-	jsa.np.gapcloser -h
+	jsa.np.npscarf -h
 	
 since h is the only prefix in this command's list of options.
 Input
 ------
 *npScarf* takes two files as required input::
 
-	jsa.np.gapcloser -s <*draft*> -b <*bam*>
+	jsa.np.npscarf -s <*draft*> -b <*bam*>
 	
 <*draft*> input is the FASTA file containing the pre-assemblies. Normally this 
 is the output from running SPAdes on Illumina MiSeq paired end reads.
@@ -146,7 +146,7 @@ Real-time scaffolding
 ----------------------
 To run *npScarf* in streaming mode::
 
-   	jsa.np.gapcloser -realtime [options]
+   	jsa.np.npscarf -realtime [options]
 
 In this mode, the <*bam*> file will be processed block by block. The size of block 
 (number of BAM/SAM records) can be manipulated through option *-read* and *-time*.
@@ -155,11 +155,11 @@ The idea of streaming mode is when the input <*nanopore*> file is retrieved in s
 npReader is the module that provides such data from fast5 files returned from the real-time
 base-calling cloud service Metrichor. Ones can run::
 
-	jsa.np.f5reader -realtime -folder c:\Downloads\ -fail -output - | \
+	jsa.np.npreader -realtime -folder c:\Downloads\ -fail -output - | \
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.gapcloser -realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.npscarf -realtime -b - -seq <*draft*> > log.out 2>&1
 
 or if you have the whole set of Nanopore long reads already and want to emulate the 
 streaming mode::
@@ -168,17 +168,17 @@ streaming mode::
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.gapcloser -realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.npscarf -realtime -b - -seq <*draft*> > log.out 2>&1
 
-Note that jsa.np.timeEmulate based on the field *timeStamp* located in the read name line to
+Note that jsa.np.timeEmulate based on the field *timestamp* located in the read name line to
 decide the order of streaming data. So if your input <*nanopore*> already contains the field,
 you have to sort it::
 
-	jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timeStamp
+	jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timestamp
 
-or if your file does not have the *timeStamp* data yet, you can manually make ones. For example::
+or if your file does not have the *timestamp* data yet, you can manually make ones. For example::
 
-	cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timeStamp=%.2f\n", $0, time; time++}NR%4!=1{print}' \
+	cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timestamp=%.2f\n", $0, time; time++}NR%4!=1{print}' \
 	> <*nanopore-with-time*> 
 
 Real-time annotation
@@ -191,12 +191,17 @@ and/or plasmid identifying respectively::
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.gapcloser -realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
+	jsa.np.npscarf -realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
 
 Or one can input any annotation in GFF 3.0 format:
 
-	jsa.np.gapcloser -realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
-
+	jsa.np.npscarf -realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
+	
+Assembly graph
+--------------
+*npScarf* can read the assembly graph info from SPAdes to make the results more precise (in SNP level).
+This function is still on development and the results might be slightly deviate from the stable version in
+term of number of final contigs.
 
 ##Citation
 
