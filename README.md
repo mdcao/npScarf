@@ -97,7 +97,7 @@ The processing can be distributed over a network cluster by using the streaming 
 provided in japsa package. Information can be found  
 [here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamServer.html) and
 [here](http://japsa.readthedocs.io/en/latest/tools/jsa.util.streamClient.html) and 
-[examples are here](http://japsa.readthedocs.io/en/latest/tools/jsa.np.f5reader.html)
+[examples are here](http://japsa.readthedocs.io/en/latest/tools/jsa.np.npreader.html)
 
 
 
