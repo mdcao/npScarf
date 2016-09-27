@@ -42,8 +42,8 @@ and nanopore sequencing data.
 1. Illumina sequencing data: It is essential that the reads are trimmed to remove 
 all adaptors. Low quality bases should also be removed. We make available the sequencing
 data for the Kpn2146 sample, sequenced with Illumina MiSeq and are trimmed
-with trimmomatic: [file1](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_1.fastq.gz)
-and [file 2](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_paired_2.fastq.gz).
+with trimmomatic: [file1](http://data.genomicsresearch.org/Projects/npScarf/data/Kp2146_paired_1.fastq.gz)
+and [file 2](http://data.genomicsresearch.org/Projects/npScarf/data/Kp2146_paired_2.fastq.gz).
 
 2. Nanopore sequencing data: The raw data (before base-calling) of the Kpn2146 
 can obtained from ENA with run accession ERR868296.
@@ -66,7 +66,7 @@ $ jsa.seq.sort -r -n --input spades/contigs.fasta --output Kp2146_spades.fasta
 ```
 
 The assembly of the Illumina data (using SPAdes 3.5) of the Kpn2146 is made available 
-[here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_spades.fasta)
+[here](http://data.genomicsresearch.org/Projects/npScarf/data/Kp2146_spades.fasta)
 
 * Create the bwa index for the Illumina assembly:
 
@@ -82,7 +82,7 @@ $ bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y Kp2146_spades.fasta Kp2
 ```
 
 The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
-[here](http://data.genomicsresearch.org/Download/npScarf/data/Kp2146_ONT.fastq.gz).
+[here](http://data.genomicsresearch.org/Projects/npScarf/data/Kp2146_ONT.fastq.gz).
 
 * In real-time mode, assuming the base-called data from Metrichor service are stored
 in folder Downloads, the pipeline can run with following command:
@@ -211,15 +211,15 @@ Cao, M.D., Nguyen, H.S., et al. Scaffolding and Completing Genome Assemblies in 
 bioRxiv (Cold Spring Harbor Labs Journals, 2016). doi:[10.1101/054783](http://dx.doi.org/10.1101/054783).
 
 Data and results from npScarf presented in the paper are made available following 
-[this link](http://data.genomicsresearch.org/Download/npScarf/data).
+[this link](http://data.genomicsresearch.org/Projects/npScarf/data).
 The QUAST analysis of results from npScarf and competitive methods are in also 
 presented for 
-[K. pneumoniae ATCC BAA-2146](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp2146/report.html),
-[K. pneumoniae ATCC 13883](http://data.genomicsresearch.org/Download/npScarf/results/QUAST/Kp13883/report.html),
-[E. coli K12 MG1655] (http://data.genomicsresearch.org/Download/npScarf/results/QUAST/EcK12S/report.html),
-[S. Typhil H58] (http://data.genomicsresearch.org/Download/npScarf/results/QUAST/StH58/report.html)
+[K. pneumoniae ATCC BAA-2146](http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/Kp2146/report.html),
+[K. pneumoniae ATCC 13883](http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/Kp13883/report.html),
+[E. coli K12 MG1655] (http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/EcK12S/report.html),
+[S. Typhil H58] (http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/StH58/report.html)
 and 
-[S. cerevisae W303] (http://data.genomicsresearch.org/Download/npScarf/results/QUAST/W303/report.html).
+[S. cerevisae W303] (http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/W303/report.html).
 
 
 
