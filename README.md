@@ -1,4 +1,4 @@
-#*npScarf*: Scaffolding and Completing Assemlies in Real-time Fashion
+#*npScarf*: Scaffolding and Completing Assemblies in Real-time Fashion
 
 *npScarf* (jsa.np.npscarf) is a program that scaffolds and completes draft genomes assemblies 
 in real-time with Oxford Nanopore sequencing. The pipeline can run on a computing cluster
