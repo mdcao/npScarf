@@ -117,6 +117,7 @@ or even
 	jsa.np.npscarf -h
 	
 since h is the only prefix in this command's list of options.
+
 Input
 ------
 *npScarf* takes two files as required input::
@@ -208,7 +209,7 @@ term of number of final contigs.
 Please cite npScarf if you find it useful for your research
 
 Cao, M.D., Nguyen, H.S., et al. Scaffolding and Completing Genome Assemblies in Real-time with Nanopore Sequencing. 
-bioRxiv (Cold Spring Harbor Labs Journals, 2016). doi:[10.1101/054783](http://dx.doi.org/10.1101/054783).
+Nature Communications 8, Article number: 14515 (2017). doi:[10.1038/ncomms14515].
 
 Data and results from npScarf presented in the paper are made available following 
 [this link](http://data.genomicsresearch.org/Projects/npScarf/data).
