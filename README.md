@@ -223,7 +223,6 @@ and
 [S. cerevisae W303] (http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/W303/report.html).
 
 
-
 ##License
 
 See [Japsa license](https://github.com/mdcao/japsa/blob/master/LICENSE.md)
