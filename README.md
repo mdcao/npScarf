@@ -204,7 +204,7 @@ Assembly graph
 This function is still on development and the results might be slightly deviate from the stable version in
 term of number of final contigs.
 
-##Citation
+## Citation
 
 Please cite npScarf if you find it useful for your research
 
@@ -223,6 +223,6 @@ and
 [S. cerevisae W303] (http://data.genomicsresearch.org/Projects/npScarf/results/QUAST/W303/report.html).
 
 
-##License
+## License
 
 See [Japsa license](https://github.com/mdcao/japsa/blob/master/LICENSE.md)
