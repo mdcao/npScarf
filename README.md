@@ -13,7 +13,7 @@ Dependency: The pipeline requires the following software installed
 * SPAdes >= 3.5
 * bwa >= 7.11
 
-Quick installation guide::
+Quick installation guide:
 
     $ git clone https://github.com/mdcao/japsa
     $ cd japsa
@@ -78,7 +78,7 @@ $ bwa index Kp2146_spades.fasta
 done in batch mode with the command:
 
 ```  
-$ bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y Kp2146_spades.fasta Kp2146_ONT.fastq  | jsa.np.npscarf -b - -seq Kp2146_spades.fasta -prefix Kp2146-batch 
+$ bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y Kp2146_spades.fasta Kp2146_ONT.fastq  | jsa.np.npscarf -input - -format sam -seq Kp2146_spades.fasta -prefix Kp2146-batch 
 ```
 
 The nanopore sequencing data for the Kpn2164 sample in fastq format is made available
@@ -90,7 +90,7 @@ in folder Downloads, the pipeline can run with following command:
 ```
 $ jsa.np.npreader  --realtime --folder Downloads --fail --stat --number --output - \
  | bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 Kp2146_spades.fasta -  \
- | jsa.np.npscarf -realtime -b - -seq Kp2146_spades.fasta -prefix Kp2146-realtime > log.out 2>&1
+ | jsa.np.npscarf -realtime -input - -format sam -seq Kp2146_spades.fasta -prefix Kp2146-realtime > log.out 2>&1
 ```
 
 The processing can be distributed over a network cluster by using the streaming utilities
@@ -103,7 +103,7 @@ provided in japsa package. Information can be found
 
 ## Detailed Usage
 
-A summary of *npScarf* usage can be obtained by invoking the --help option::
+A summary of *npScarf* usage can be obtained by invoking the --help option:
 
    	jsa.np.npscarf --help
    	
@@ -118,21 +118,36 @@ or even
 	
 since h is the only prefix in this command's list of options.
 
+**WARNING** Please always check the help option first before running *npScarf* since the structure and parameters list of the command can be changed significantly from different versions.
+
 Input
 ------
-*npScarf* takes two files as required input::
+*npScarf* takes two files as required input:
 
-	jsa.np.npscarf -s <*draft*> -b <*bam*>
+	jsa.np.npscarf -seq <*draft*> -input <*input*> -format sam
 	
 <*draft*> input is the FASTA file containing the pre-assemblies. Normally this 
 is the output from running SPAdes on Illumina MiSeq paired end reads.
 
-<*bam*> contains SAM/BAM formated alignments between <*draft*> file and <*nanopore*> 
+<*input*> contains SAM/BAM formated alignments between <*draft*> file and <*nanopore*> 
 FASTA/FASTQ file of long read data. We use BWA-MEM as the recommended aligner 
-with the fixed parameter set as follow::
+with the fixed parameter set as follow:
 
 	bwa mem -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y <*draft*> <*nanopore*> > <*bam*>
 	
+Starting from our newest versions of *npScarf*, BWA-MEM is integrated into the command for convenience. Thus the input file is not limitted to SAM/BAM anymore, you can also provide long reads in FASTQ/FASTA format together with BWA-MEM arguments.
+For example, instead of taking SAM/BAM input data from BWA-MEM explicitly like:
+
+	bwa mem -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y <*draft*> <*nanopore*> \
+	|jsa.np.npscarf -input - -format sam -seq <*draft*> > log.out 2>&1
+	
+you can do::
+
+	jsa.np.npscarf -bwaExe=</path/to/BWA> -bwaThread=<#threads> -input <*nanopore*> -format fastq -seq <*draft*> > log.out 2>&1
+	
+For that reason, it is important to provide the format of the input file if it's in SAM/BAM (default is FASTA/FASTQ).
+You don't have to specify BWA execution files location if they are already included in your PATH environment variable. 
+
 Output
 ------
 *npScarf* output is specified by *-prefix* option. The default prefix is \'out\'.
@@ -154,30 +169,30 @@ In this mode, the <*bam*> file will be processed block by block. The size of blo
 
 The idea of streaming mode is when the input <*nanopore*> file is retrieved in stream.
 npReader is the module that provides such data from fast5 files returned from the real-time
-base-calling cloud service Metrichor. Ones can run::
+base-calling cloud service Metrichor. Ones can run:
 
 	jsa.np.npreader -realtime -folder c:\Downloads\ -fail -output - | \
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.npscarf -realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.npscarf -realtime -input - -format sam -seq <*draft*> > log.out 2>&1
 
 or if you have the whole set of Nanopore long reads already and want to emulate the 
-streaming mode::
+streaming mode:
 
 	jsa.np.timeEmulate -s 100 -i <*nanopore*> -output - | \
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.npscarf -realtime -b - -seq <*draft*> > log.out 2>&1
+	jsa.np.npscarf -realtime -input - -format sam -seq <*draft*> > log.out 2>&1
 
 Note that jsa.np.timeEmulate based on the field *timestamp* located in the read name line to
 decide the order of streaming data. So if your input <*nanopore*> already contains the field,
-you have to sort it::
+you have to sort it:
 
 	jsa.seq.sort -i <*nanopore*> -o <*nanopore-sorted*> -sortKey=timestamp
 
-or if your file does not have the *timestamp* data yet, you can manually make ones. For example::
+or if your file does not have the *timestamp* data yet, you can manually make ones. For example:
 
 	cat <*nanopore*> |awk 'BEGIN{time=0.0}NR%4==1{printf "%s timestamp=%.2f\n", $0, time; time++}NR%4!=1{print}' \
 	> <*nanopore-with-time*> 
@@ -186,23 +201,25 @@ Real-time annotation
 --------------------
 The tool includes usecase for streaming annotation. Ones can provides database of antibiotic
 resistance genes and/or Origin of Replication in FASTA format for the analysis of gene ordering
-and/or plasmid identifying respectively::
+and/or plasmid identifying respectively:
 
 	jsa.np.timeEmulate -s 100 -i <*nanopore*> -output - | \
 
 	bwa mem -t 10 -k11 -W20 -r10 -A1 -B1 -O1 -E1 -L0 -a -Y -K 3000 <*draft*> - 2> /dev/null | \ 
 
-	jsa.np.npscarf -realtime -b - -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
+	jsa.np.npscarf -realtime -input - -format sam -seq <*draft*> -resistGene <*resistDB.fasta*> -oriRep <*origDB.fasta*> > log.out 2>&1
 
 Or one can input any annotation in GFF 3.0 format:
 
-	jsa.np.npscarf -realtime -b - -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
+	jsa.np.npscarf -realtime -input - -format sam -seq <*draft*> -genes <*genesList.GFF*> > log.out 2>&1
 	
 Assembly graph
 --------------
-*npScarf* can read the assembly graph info from SPAdes to make the results more precise (in SNP level).
+*npScarf* can read the assembly graph info from SPAdes for the gap-filling to make the results more precise.
 This function is still on development and the results might be slightly deviate from the stable version in
-term of number of final contigs.
+term of number of final contigs:
+
+	jsa.np.npscarf -input <input> -format <format> -seq <*draft*> -spades <spades output folder> > log.out 2>&1
 
 ## Citation
 
