@@ -6,6 +6,8 @@ as well as on a laptop computer for microbial datasets. It also facilitates the 
 analysis of positional information such as gene ordering and the detection of genes from
 mobile elements (plasmids and genomic islands).
 
+Note: *npScarf* is not on maintenance anymore, instead [*npGraph*](https://github.com/hsnguyen/assembly/blob/master/docs/npgraph.md) is under development and would be the replacement.
+
 ## Installation
 
 Dependency: The pipeline requires the following software installed
